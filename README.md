@@ -1,2 +1,3 @@
-# dashboard-analysis
-This repository is an analysis of the covid19india.org dashboard. It serves as the final essay for GEOG 458
+# Covid19India Dashboard Analysis
+## GEOG 458: Final Essay
+### GitHub repository: https://github.com/covid19india
