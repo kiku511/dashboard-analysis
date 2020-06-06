@@ -32,18 +32,69 @@ After the sanity check, the data is saved in the gh-pages branch of the reposito
 
 ### Services
 
-On the backend the app majorly uses GitHub Actions and Google Sheets API. Apart from that there is Immer and MomentJS libraries used for the code to make immutable states and to use date and times properly. The webapp also uses a lot of services on the frontend. The frontend client (dashboard) uses the backend API as a service. It also uses Google Fonts for different kinds of text on the client. There is also usage of Google Tag Manager to collect analytics about the usage of the website. For mapping, the website uses state, district and country boundary GeoJSONs derived from OpenStreetMap and D3 library to show those regions as a choropleth.
+On the backend the app majorly uses GitHub Actions and Google Sheets API. Apart from that there is Immer and MomentJS libraries used for the code to make immutable states and to use date and times properly. The webapp also uses a lot of services on the frontend. The frontend client (dashboard) uses the backend API as a service. It also uses Google Fonts for different kinds of text on the client. There is also usage of Google Tag Manager to collect analytics about the usage of the website. For mapping, the website uses state, district and country boundary GeoJSONs derived from Indian government websites and D3 library to show those regions as a choropleth.
 
 ### Client
 
-The client side is made using the React framework which allows for reusable components and easier data flow throughout the app. The client side uses D3 library to visualize the map and for other charting elements as well. The client features multiple tabs for different resources, alongwith a homepage that displays the statistics of the disease using spread trends with uniform and logarithmic graphs. alongwith a map of India that displays the choropleth. This map can also be switched to show hotspots in the country using a bubble map. Clicking on a state on the map also shows the various districts inside the state and their statistics. This is also bound with the table of statistics on the side as the state's cell opens up. The frontend uses a lot of different libraries. It uses Leaflet for distance mapping for resources. It also uses Spring for state change animations and hover effects on the map.
+The client side is made using the React framework which allows for reusable components and easier data flow throughout the app. The client side uses D3 library to visualize the map and for other charting elements as well. The client features multiple tabs for different resources, alongwith a homepage that displays the statistics of the disease using spread trends with uniform and logarithmic graphs. alongwith a map of India that displays the choropleth. This map can also be switched to show hotspots in the country using a bubble map. Clicking on a state on the map also shows the various districts inside the state and their statistics. This is also bound with the table of statistics on the side as the state's cell opens up. The frontend uses a lot of different libraries. It uses Leaflet for distance mapping for resources. It also uses Spring for state change animations and hover effects on the map. On the bottom left part of the app, there is also a button to change the theme of the website to make it dark mode.
 
 ## Code Inspection
 
-- talk about network flow (kinds of resources, time to live, first paint)
-- other libraries used
-- major visual components
-- functions
+### Network
+
+Looking at the code for the website there are numerous things that I noticed. It took about 0.4 seconds for the website to first load, which means in less than a half a second the website is interactive, which is pretty good considering the amount of elements on the page.
+
+Apart from that the website also pulls data from the API, precompiled CSS, minified JS code and the geoJSON for the regions using HTTP requests.
+
+### JS Framework
+
+As mentioned before, the webapp uses [React](https://reactjs.org/) which means that there are custom components on the page representing each `<div>` element. It uses a Virtual DOM to add elements to the page unlike the regular DOM. The dashboard also uses [React-Router-DOM](https://www.npmjs.com/package/react-router-dom) to manage different tabs for the website. This is done in such a code:
+
+```javascript
+<Router>
+  ...
+  <Route exact path="/">
+    <Home />
+  </Route>
+  ...
+</Router>
+```
+
+### CSS Framework
+
+This is a simplified version of the code that sees the path in the URL and puts the Home component inside the DOM. This code can be seen in the [App.js](https://github.com/covid19india/covid19india-react/blob/master/src/App.js) file.
+
+A very important reason of why the app looks so neat is because of its CSS styling but in this case, the app uses Sass for styling. Sass is a preprocessor for CSS that lets the developers add variable names for things like colors and have logic built into the CSS as well. This is helpful as the developer does not have to copy paste the same color codes with lighter and darker variations everywhere.
+
+```scss
+$blue: #007bff;
+$blue-light: #007bff10;
+$blue-hover: #007bff30;
+$blue-light-opaque: #eff7ff;
+...
+```
+
+In this case we can see that a list of colors are defined for both light mode and dark mode in the [App.scss](https://github.com/covid19india/covid19india-react/blob/master/src/App.scss) file.
+
+### Major Visual Components
+
+There are 2 major components on the home page. The table that lists all the cases on the left and the map of India on the right. Hovering on any state on the map also highlights the state row in the table as well.
+
+#### Map
+
+![Covid19India Choropleth](images/choropleth.png)
+
+The map is a choropleth of all the confirmed cases in the country by default. This can be changed by clicking the tabs on the top that show active, recovered, deceased and tested choropleths as well. When a state is clicked on, all the different district in the state are shown as a choropeth and we can see the district level trends. The summary statistics and the spread trends charts underneath the map also change based on the state selection. The data about the boundaries of states and the country is pulled from Indian government websites. The projection used for these boundaries is Transverse Mercator as shown from the GeoJSON codes. Every district has a district code, a name, a statename and a statecode as well which are used as indices.
+
+#### Data Table
+
+![Covid19India Choropleth](images/data-table.png)
+
+The data table on the left indicates the statistics about each state and the state is highlighted on the map as the table row is hovered on. Clicking on each state leads to a separate page with details about the state and data from it.
+
+### Responsiveness
+
+This dashboard works well on different sizes. I tested it on the laptop screen, an extended screen and a mobile screen using the chrome inspector devices tool. On smaller screen, the website uses a single column layout where the map is pushed below the data table. On a larger screen, there are two columns. The code uses [@juggle/resize-observer](https://github.com/juggle/resize-observer) to keep a track of the size of the screen and adjsut the components on the page respectively.
 
 ## Data Sources
 
@@ -58,6 +109,8 @@ The client side is made using the React framework which allows for reusable comp
 While researching this project and looking at various code sources, I came across a few interesting observations.
 
 - In the repository for the frontend code I found that GitHub uses Leaflet tile panes to show a basemap when a GeoJSON fule is uploaded. For example, this district boundaries for the state of [Maharashtra](https://github.com/covid19india/covid19india-react/blob/master/public/maps/maharashtra.json) are shown in blue while an OpenStreetMap basemap is used and it is shown on a MapBox container.
+
+- Leaflet KNN
 
 ## Reflection
 
