@@ -89,6 +89,7 @@ The map is a choropleth of all the confirmed cases in the country by default. Th
 #### Data Table
 
 ![Covid19India Data Table](images/data-table.png = 250x)
+❮img src="images/data-table.png" width="100" ❯
 
 The data table on the left indicates the statistics about each state and the state is highlighted on the map as the table row is hovered on. Clicking on each state leads to a separate page with details about the state and data from it.
 
