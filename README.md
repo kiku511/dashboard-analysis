@@ -126,13 +126,26 @@ The web map has three major elements.
 
 ## Strengths and Weaknesses
 
+Like any other website/dashboard/mapping service. This website has its pros and cons. While it excels in design and responsiveness, it fails to provide a geographic sense alongwith the map.
+
+### Strengths
+
+1. Good CSS and design which includes a dark and a light mode.
+2. Translation which includes many regional languages of India so that the website is accessible to the targeted audience.
+3. The website serves more than just a dashboard by providing links for essential services and resources to the people.
+
+### Weaknesses
+
+1. Lack of geographic context. By choosing not to add a basemap, the website takes away from the experience as the user cannot imagine themselves as the location as there is no satellite imagery or any kind of a basemap to provide visual and locational context.
+2. Zoom levels. By choosing D3 as their mapping library, it takes away the exprience of zoom levels that a map provides.
+
 ## Interesting Observations
 
 While researching this project and looking at various code sources, I came across a few interesting observations.
 
 - In the repository for the frontend code I found that GitHub uses Leaflet tile panes to show a basemap when a GeoJSON fule is uploaded. For example, this district boundaries for the state of [Maharashtra](https://github.com/covid19india/covid19india-react/blob/master/public/maps/maharashtra.json) are shown in blue while an OpenStreetMap basemap is used and it is shown on a MapBox container.
 
-- Leaflet KNN
+- For the frontend code, I also found that the dashboard uses K Nearest Neighbors algorithm to calculate which essential services might be near the user based on their location. The code uses Leaflet-friendly KNN [library](https://github.com/mapbox/leaflet-knn) provided by MapBox to calculate this.
 
 ## Reflection
 
@@ -143,8 +156,13 @@ roughly cover:
 - patients confidential but map relations
 - roadmap
 
-Links:
-https://www.covid19india.org/
-https://github.com/covid19india
-https://www.covid19india.org/about
-https://www.mohfw.gov.in/
+## References Used:
+
+- https://www.covid19india.org/
+- https://github.com/covid19india
+- https://www.covid19india.org/about
+- https://www.mohfw.gov.in/
+- https://github.com/mapbox/leaflet-knn
+- https://reacttraining.com/react-router/
+- https://reactjs.org/
+- https://sass-lang.com/
