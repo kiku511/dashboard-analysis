@@ -112,9 +112,17 @@ Apart from that it also crowdsources the data for essentials and resources for e
 
 ## Basemap
 
-This dashboard does not use a basemap which could be one of its fallacies. This could be because the area where the map is shown changes when an area is clicked on and thus the background would change very frequently as well. Or it could be just for aesthetic purposes. However, on digging deeper, I found that the GeoJSONs used have a default topological basemap which is rendered on GitHub for each state's GEOJSON.
+This dashboard does not use a basemap which could be one of its fallacies. This could be because the area where the map is shown changes when an area is clicked on and thus the background would change very frequently as well. Or it could be just for aesthetic purposes. However, on digging deeper, I found that the GeoJSONs used have a default topological basemap which is rendered on GitHub for each state's GeoJSON.
 
-## Web Map Element
+## Web Map Elements
+
+The web map has three major elements.
+
+| Element             | Description                                                                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📏 Scale            | There is a choropleth scale right under the map that specifies the level of intesnity for each statistics.                                    |
+| 🎛 Nav Buttons       | There are a couple of nav buttons on the top right of the map that leads to the full map when on state level or to the page's state.          |
+| 🔢 Region Statistic | The statistic on the top left shows what the statistic of the cases is for the selected region. This changes as the scope of the map changes. |
 
 ## Strengths and Weaknesses
 
