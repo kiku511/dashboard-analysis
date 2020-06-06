@@ -86,13 +86,17 @@ There are 2 major components on the home page. The table that lists all the case
 
 #### Map
 
+<p align="center">
 <img src="images/choropleth.png" width="400" alt="covid19india choropleth map">
+</p>
 
 The map is a choropleth of all the confirmed cases in the country by default. This can be changed by clicking the tabs on the top that show active, recovered, deceased and tested choropleths as well. When a state is clicked on, all the different district in the state are shown as a choropeth and we can see the district level trends. The summary statistics and the spread trends charts underneath the map also change based on the state selection. The data about the boundaries of states and the country is pulled from Indian government websites. The projection used for these boundaries is Transverse Mercator as shown from the GeoJSON codes. Every district has a district code, a name, a statename and a statecode as well which are used as indices.
 
 #### Data Table
 
+<p align="center">
 <img src="images/data-table.png" width="400" alt="covid19india data table">
+</p>
 
 The data table on the left indicates the statistics about each state and the state is highlighted on the map as the table row is hovered on. Clicking on each state leads to a separate page with details about the state and data from it.
 
