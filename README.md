@@ -4,6 +4,10 @@
 
 **GitHub repository:** https://github.com/covid19india
 
+<p align="center">
+<img src="https://lh3.googleusercontent.com/-grjTcOMyemYN_JiN3QlkZzgh61D88LNFLj2-8QaqcjLWn_MouQe9zux8ZfMH4R7SLfR-cfHYD1b84KUlPqYucP5gZWTuo2J=s2560" width="100%">
+</p>
+
 ## Introduction
 
 This dashboard is a crowdsource prohect that aims to track the spread of nCOVID-19 in India and the extent of the outbreak in the country. The home page primarily shows the spread of cases in India as a choropleth with a table that lists the number of cases by state and district.
@@ -82,13 +86,13 @@ There are 2 major components on the home page. The table that lists all the case
 
 #### Map
 
-<img src="images/choropleth.png" width="250" alt="covid19india choropleth map">
+<img src="images/choropleth.png" width="400" alt="covid19india choropleth map">
 
 The map is a choropleth of all the confirmed cases in the country by default. This can be changed by clicking the tabs on the top that show active, recovered, deceased and tested choropleths as well. When a state is clicked on, all the different district in the state are shown as a choropeth and we can see the district level trends. The summary statistics and the spread trends charts underneath the map also change based on the state selection. The data about the boundaries of states and the country is pulled from Indian government websites. The projection used for these boundaries is Transverse Mercator as shown from the GeoJSON codes. Every district has a district code, a name, a statename and a statecode as well which are used as indices.
 
 #### Data Table
 
-<img src="images/data-table.png" width="250" alt="covid19india data table">
+<img src="images/data-table.png" width="400" alt="covid19india data table">
 
 The data table on the left indicates the statistics about each state and the state is highlighted on the map as the table row is hovered on. Clicking on each state leads to a separate page with details about the state and data from it.
 
@@ -98,7 +102,13 @@ This dashboard works well on different sizes. I tested it on the laptop screen, 
 
 ## Data Sources
 
-## BaseMap
+This webapp dashboard uses multiple data sources. For crowdsourcing the patient data it relies on the different state used form of broadcast. Some states publish their patient data on their websites (like Delhi's cases on June 5: [here](https://delhifightscorona.in/wp-content/uploads/2020/06/06-05.pdf)), which the volunteers then pull and then put on the Google Sheets, while some states have twitter bots (like Bihar's cases on June 4: [here](https://twitter.com/BiharHealthDept/status/1268574660280680455/photo/1)) that release this data. All this data is accessed via this API: https://github.com/covid19india/api#json that the backend provides and formats well for the dashboard to use.
+
+Apart from that it also crowdsources the data for essentials and resources for each state, so that people can see where they can find essential items around them during the lockdown imposed by the government. This is fetched with the backend API again. The endpoint for which is: https://api.covid19india.org/resources/resources.json.
+
+## Basemap
+
+This dashboard does not use a basemap which could be one of its fallacies. This could be because the area where the map is shown changes when an area is clicked on and thus the background would change very frequently as well. Or it could be just for aesthetic purposes. However, on digging deeper, I found that the GeoJSONs used have a default topological basemap which is rendered on GitHub for each state's GEOJSON.
 
 ## Web Map Element
 
