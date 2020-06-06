@@ -149,15 +149,15 @@ While researching this project and looking at various code sources, I came acros
 
 ## Reflection
 
-roughly cover:
+Apart from the technical observations, while going through this project and analyzing the functions that it serves, I also realized the social aspects of the project.
 
-- languages
-- locale translations
-- patients confidential but map relations
-- roadmap
+A lot of modern projects, maps, dashboards are made in a single language. This website uses local translations for the locations on the map apart from general translation of the entire website as well in multiple regional languages. This not only increases accessibility of the website but also increases the audience for the website. In India, currently there is a big digital divide because of two reasons. First, technology is expensive to purchase and second, content is only available in a certain number of languages. Getting a smartphone these days has become relatively cheaper which makes buying the technology accessible but what remains a problem of concern is having quality content in local languages. This issue is addressed very well by the contributors of this smart dashboard.
+
+As a smart dashboard, this website is essentially a resource of urban data for not only the public but also policy makers. As Kitchin et al, write in their paper, _The praxis and politics of building urban dashboards_ that simply distilling down a social phenomenon into numbers is not enough. As these numbers are "objective and value-free", it is important that the contributors of this or any dashboard realize that these numbers represent actual lives of human beings. While looking at the number of deaths and suggesting that a city is relatively free of nCovid-19, it is important to recognize that these are actual lives that we lost due to the disease. Providing such a humanitarian context is hard to do using smart dashboards. Being a socio-technical assemblage, a dashboard (especially one that tracks a disease) could potentially provide this social context through stories and news articles.
 
 ## References Used:
 
+- https://www.sciencedirect.com/science/article/abs/pii/S0016718515300245
 - https://www.covid19india.org/
 - https://github.com/covid19india
 - https://www.covid19india.org/about
